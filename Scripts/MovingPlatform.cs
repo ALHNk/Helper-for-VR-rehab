@@ -9,11 +9,10 @@ public class MovingPlatform : MonoBehaviour
 {
 	public float maxZ, minZ;
 	public float speed;
-	 private Vector3 lastPosition;
-	 private float lastTime;
-	 private Vector3 touchStart;
-	 public InputField IpText;
-	 
+	private Vector3 lastPosition;
+	private float lastTime;
+	private Vector3 touchStart;
+	private string ip;
 	public float rotationAmount, deadzone;
 	 
 	 UdpClient udpClient;
@@ -23,6 +22,7 @@ public class MovingPlatform : MonoBehaviour
 		 lastPosition = transform.position;
 		 lastTime = Time.time;
 		 udpClient = new UdpClient();
+		 ip = PlayerPrefs.GetString("ActiveIp");
 	 }
 	 
 	 void Update()
@@ -62,12 +62,18 @@ public class MovingPlatform : MonoBehaviour
 		 }
 	 }
 	 
+	public void changeIp(string newIp)
+	{
+		ip = newIp;
+	}
+	 
 	void SendValues(float speed, float rotation)
 	 {
 		 string msg = speed.ToString("F2") + "," + rotation.ToString("F2");
 		 byte[] data = Encoding.ASCII.GetBytes(msg);
-		 Debug.Log(data);
-		 udpClient.Send(data, data.Length, IpText.text, 9050); 
+		 Debug.Log(msg);
+		 Debug.Log("IP is" + ip);
+		 udpClient.Send(data, data.Length, ip, 9050); 
 	 }
 	 
 	 void OnApplicationQuit()
