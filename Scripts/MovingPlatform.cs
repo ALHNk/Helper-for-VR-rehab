@@ -14,6 +14,8 @@ public class MovingPlatform : MonoBehaviour
 	 private Vector3 touchStart;
 	 public InputField IpText;
 	 
+	public float rotationAmount, deadzone;
+	 
 	 UdpClient udpClient;
 	 
 	 void Start()
@@ -30,6 +32,10 @@ public class MovingPlatform : MonoBehaviour
 			 Touch t = Input.GetTouch(0);
 			 Ray ray = Camera.main.ScreenPointToRay(t.position);
 			 RaycastHit hit;
+			
+			 rotationAmount = Input.acceleration.x;
+			 
+			 rotationAmount = Mathf.Abs(rotationAmount) > deadzone ? rotationAmount : 0f;
 	 
 			 if (Physics.Raycast(ray, out hit))
 			 {
@@ -46,20 +52,21 @@ public class MovingPlatform : MonoBehaviour
 				 else if (transform.localPosition.z < minZ)
 					 transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, maxZ);
 	 
-				 SendSpeed(speed);
+				 SendValues(speed, rotationAmount);
 			 }
 		 }
 		 else
 		 {
 			 speed = 0;
-			 SendSpeed(speed);
+			 SendValues(speed, rotationAmount);
 		 }
 	 }
 	 
-	 void SendSpeed(float s)
+	void SendValues(float speed, float rotation)
 	 {
-		 string msg = s.ToString("F2");
+		 string msg = speed.ToString("F2") + "," + rotation.ToString("F2");
 		 byte[] data = Encoding.ASCII.GetBytes(msg);
+		 Debug.Log(data);
 		 udpClient.Send(data, data.Length, IpText.text, 9050); 
 	 }
 	 

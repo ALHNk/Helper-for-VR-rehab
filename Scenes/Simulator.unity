@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -401.95, y: 0}
+  m_AnchoredPosition: {x: -401.94995, y: 0}
   m_SizeDelta: {x: -803.92, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109676190
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.26226407, g: 0.5789495, b: 1, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -903,7 +903,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Menu
+
+'
 --- !u!222 &834553575
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1033,10 +1035,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28acba1372ee221428fe437d88b4bd81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxZ: 2
-  minZ: -7
+  maxZ: 3
+  minZ: -3
   speed: 0
   IpText: {fileID: 150622633}
+  rotationAmount: 0
+  deadzone: 0.05
 --- !u!1 &1010156766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,7 +1277,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: bea98cf8837cb954cb512d4c5b49bd3d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
