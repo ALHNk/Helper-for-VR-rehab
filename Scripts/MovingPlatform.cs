@@ -15,7 +15,7 @@ public class MovingPlatform : MonoBehaviour
 	private string ip;
 	public float rotationAmount, deadzone;
 	 
-	 UdpClient udpClient;
+	UdpClient udpClient;
 	 
 	 void Start()
 	 {
